@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+#divCodeWrapper {
+    height: 500px;
+    width: 900px;
+    overflow: hidden;
+    border: 1px solid #a5a5a5;
+}
+
+textarea {
+    font-family: "Roboto Mono", monospace;
+    font-weight: 400;
+    font-size: 10pt;
+    line-height: 150%;
+    overflow-x: auto;
+    overflow-y: scroll;
+    white-space: nowrap;
+    padding: 15px;
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+}

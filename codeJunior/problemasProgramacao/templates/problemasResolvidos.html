@@ -1,0 +1,35 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block static_css %}
+    <link rel="stylesheet" href="{% static 'problemasProgramacao/geral.css' %}">
+{% endblock static_css %}
+
+{% block content %}
+<div class="flex container mx-auto min-h-screen flex-col items-center justify-between px-24 py-12">
+    <section class="w-1/2">
+        <h1 class="text-slate-900 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">Problemas Resolvidos</h1>
+        <br>
+        <p>Para voltar para a página de problemas, clique <a href="{% url 'submeterTentativa' %}">aqui</a></p>
+        <br>
+        <ul>
+            {% for problema in object_list %}
+            <li>
+                Problema:
+                {{problema.titulo}}
+            </li>
+            <li>
+                Minha solução:
+                {{problema.solucao}}
+            </li>
+            <li>
+                Dificuldade:
+                {{problema.dificuldade}}
+            </li>
+            {% endfor %}
+        </ul>
+
+            
+    </section>
+</div>
+{% endblock content %}
