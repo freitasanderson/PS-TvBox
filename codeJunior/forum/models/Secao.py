@@ -8,7 +8,7 @@ class Secao(models.Model):
     nome = models.CharField(u'Nome da Seção', max_length=255)
     descricao = models.TextField(u'Descrição da Seção', max_length=500, null=True, blank=True)
     
-    area = models.models.ForeignKey(Area, verbose_name=("Area"), on_delete=models.CASCADE)
+    area = models.ForeignKey(Area, verbose_name=("Area"), on_delete=models.CASCADE)
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=True)
 

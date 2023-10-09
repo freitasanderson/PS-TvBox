@@ -5,8 +5,8 @@ class Linguagem(models.Model):
     nome = models.CharField(u'Nome', max_length=255)
 
     class Meta:
-        verbose_name = 'Linguagem da Documentação'
-        verbose_name_plural = 'Linguagem da Documentação'
+        verbose_name = 'Linguagem'
+        verbose_name_plural = 'Linguagem'
         ordering = ['id','nome']
 
     def __str__(self):
