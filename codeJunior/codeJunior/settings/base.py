@@ -17,6 +17,7 @@ INSTALLED_APPS = [
     ####
     "desafios",
     "cadastro",
+    "forum",
 ]
 
 MIDDLEWARE = [
