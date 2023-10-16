@@ -11,7 +11,6 @@ class DesafiosListView(LoginRequiredMixin, ListView):
       context = super().get_context_data(**kwargs)
       submissoes = Submissao.objects.filter(problema__in=Desafio.objects.all(), pessoa__user=self.request.user)
       context['data'] = self.getDataSubmissoes(submissoes)
-      print(context['data'])
       context['submissoes'] = submissoes
       context['submissoesCorretas'] = submissoes.filter(resultado=1).count()
       if submissoes:

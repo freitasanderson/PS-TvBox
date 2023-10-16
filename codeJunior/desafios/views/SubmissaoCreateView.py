@@ -18,7 +18,7 @@ class SubmissaoCreateView(FormView):
         try:
             resultadoBytes = subprocess.check_output(['python', '-c', codigo], stderr=subprocess.STDOUT, timeout=10)
             resultadoStr = resultadoBytes.decode('utf-8')
-            print(f'Resultado: {resultadoStr}')
+            
             return resultadoStr
         except subprocess.CalledProcessError as e:
             return e.output.decode('utf-8')
