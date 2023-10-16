@@ -1,6 +1,6 @@
 from django.db import models
 
-from desafios.models import Trilha, OpcaoQuiz
+from desafios.models import Trilha, OpcaoQuiz, RespostaQuiz
 from cadastro.models import Pessoa
 
 class Quiz(models.Model):
@@ -23,4 +23,21 @@ class Quiz(models.Model):
 
   def __str__(self):
       return f'{self.titulo}'
+  
+  def checkUsuarioPassou(self, quemRespondeu):
+    # Ter mais de 70% das respostas corretas
+    opcoesRespondidas = RespostaQuiz.objects.filter(quiz=self, quemRespondeu=quemRespondeu)
+    qtdOpcoesRespondidas = opcoesRespondidas.count()
+    qtdRespostasCorretas = opcoesRespondidas.filter(alternativaSelecionada__correta=True).count()
+
+    if qtdRespostasCorretas < 1 or qtdOpcoesRespondidas < 1:
+      return False
     
+    # Verificar se houve mais de 70% de respostas corretas
+    porcentagemRespostasCorretas = (qtdRespostasCorretas / qtdOpcoesRespondidas) * 100
+
+    if porcentagemRespostasCorretas > 70:
+      return True
+    else:
+      return False
+

@@ -11,6 +11,7 @@ class RespostaOpcaoQuizCreateView(CreateView):
   def form_valid(self, form):
       resposta = form.save(commit=False)
       resposta.quemCadastrou = self.request.user
+      resposta.save()
       return super().form_valid(form)
 
   def form_invalid(self, form):
