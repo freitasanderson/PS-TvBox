@@ -1,0 +1,1 @@
+from forum.views.ForumIndexView import ForumIndexView
