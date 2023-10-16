@@ -13,3 +13,6 @@ from desafios.models.quiz.RespostaQuiz import RespostaQuiz
 from desafios.models.quiz.AlternativaOpcaoQuiz import AlternativaOpcaoQuiz
 from desafios.models.quiz.OpcaoQuiz import OpcaoQuiz
 from desafios.models.quiz.Quiz import Quiz
+
+### Sistema de Emblemas
+from desafios.models.Emblema import Emblema
