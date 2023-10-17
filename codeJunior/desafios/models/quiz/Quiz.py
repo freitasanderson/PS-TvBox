@@ -2,6 +2,7 @@ from django.db import models
 
 from desafios.models import Trilha, OpcaoQuiz, RespostaQuiz
 from cadastro.models import Pessoa
+from desafios.models.Emblema import Emblema
 
 class Quiz(models.Model):
   titulo = models.TextField(verbose_name="Titulo do quiz", max_length=300)
@@ -37,7 +38,12 @@ class Quiz(models.Model):
     porcentagemRespostasCorretas = (qtdRespostasCorretas / qtdOpcoesRespondidas) * 100
 
     if porcentagemRespostasCorretas > 70:
-      return True
+        trilhaQuiz = self.trilha
+        emblema = Emblema.objects.get(trilha=trilhaQuiz)
+        print(emblema)
+        quemRespondeu.emblemasGanhos.add(emblema)
+        
+        return True
     else:
       return False
 
