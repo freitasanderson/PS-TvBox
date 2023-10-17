@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="title-forum">
+        
+        <p class="text-7xl text-center mt-4 pb-4 font-extrabold text-white text-4xl">Code Junior Fórum</p>
+    </div>
+
+    <div class="areas pb-6">
+
+        
+            <div class="area mb-4">
+                <div class="area-header">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-sky-600">
+                            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 font-bold">
+                                        {{secao}}
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {% for subsecao in secao.subsecoes %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    {{subsecao}}
+                                                </div>
+                                                <div class="subsecao-descricao text-slate-600 font-light ml-4">
+                                                    {{subsecao.descricao}}
+                                                </div>
+
+                                            </th>
+                                                
+                                            <td class="px-6 py-1">
+                                            </td>
+                                            <td class="px-6 py-2 text-slate-700 font-bold">
+                                                {{subsecao.posts|length}} posts em {{subsecao.topicos|length}} tópicos.
+                                            </td>
+                                            <td class="px-6 py-1">
+                                            </td>
+                                            <td class="px-6 py-8 text-slate-700 font-bold">
+                                                {% if subsecao.ultimoPost %}
+                                                    Último Post:
+
+                                                    <span class="text-green-500">
+                                                        {{subsecao.ultimoPost.quemPostou}} 
+                                                    </span>
+
+                                                    em 
+                                                    <span class="text-amber-500">
+                                                        {{subsecao.ultimoPost.topico}}
+                                                    </span>
+                                                    
+                                                {% endif %}
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+
+                                    
+                            </tbody>
+                        </table>
+
+                        {% if not secao.subsecoes %}
+                            <table class="w-full text-sm text-left text-sky-600">
+                                <tbody>
+                                    {% for topico in secao.topicos %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    {{topico}}
+                                                </div>
+                                                <div class="subsecao-descricao text-slate-600 font-light ml-4">
+                                                    {{topico.indexPost.conteudo|truncatechars:100|safe}}
+                                                </div>
+
+                                            </th>
+                                            <td class="px-6 py-2 text-slate-700">
+                                            </td>    
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Respostas: {{topico.posts|length}}
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Ultimo post por: 
+                                                <span class="text-green-500">
+                                                    {{topico.ultimoPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Criado por 
+                                                <span class="text-green-500">
+                                                    {{topico.indexPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+                
+            </div>
+            {% if secao.subsecoes %}
+                <div class="area mb-4">
+                    <div class="area-header">
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                            <table class="w-full text-sm text-left text-sky-600">
+                                <tbody>
+                                    {% for topico in secao.topicos %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    {{topico}}
+                                                </div>
+                                                <div class="subsecao-descricao text-slate-600 font-light ml-4">
+                                                    {{topico.indexPost.conteudo|truncatechars:100|safe}}
+                                                </div>
+
+                                            </th>
+                                            <td class="px-6 py-2 text-slate-700">
+                                            </td>    
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Respostas: {{topico.posts|length}}
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Ultimo post por: 
+                                                <span class="text-green-500">
+                                                    {{topico.ultimoPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Criado por 
+                                                <span class="text-green-500">
+                                                    {{topico.indexPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            {% endif %}
+        </div>
+{% endblock content %}

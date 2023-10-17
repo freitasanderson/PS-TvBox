@@ -8,7 +8,7 @@ class Topico(models.Model):
     nome = models.CharField(u'Nome da Tópico', max_length=255)
     
     secao = models.ForeignKey(Secao, verbose_name=("secao"), on_delete=models.CASCADE)
-    subsecao = models.ForeignKey(SubSecao, verbose_name=("subsecao"), on_delete=models.CASCADE)
+    subsecao = models.ForeignKey(SubSecao, verbose_name=("subsecao"), null=True, blank=True, on_delete=models.CASCADE)
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=True)
 
