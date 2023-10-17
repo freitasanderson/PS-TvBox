@@ -11,7 +11,7 @@ class SecaoView(TemplateView):
 
         secao = Secao.objects.get(id=kwargs.get('pk'))
 
-        topicos = Topico.objects.filter(secao=secao)
+        topicos = Topico.objects.filter(secao=secao,subsecao=None)
                     
         for topico in topicos:
 

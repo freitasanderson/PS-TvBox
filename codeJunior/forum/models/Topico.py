@@ -9,6 +9,8 @@ class Topico(models.Model):
     
     secao = models.ForeignKey(Secao, verbose_name=("secao"), on_delete=models.CASCADE)
     subsecao = models.ForeignKey(SubSecao, verbose_name=("subsecao"), null=True, blank=True, on_delete=models.CASCADE)
+    
+    dataCadastro = models.DateTimeField('Data de Cadastro', auto_now_add=True, null=True)
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=True)
 

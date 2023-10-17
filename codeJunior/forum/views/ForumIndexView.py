@@ -17,14 +17,14 @@ class ForumIndexView(TemplateView):
 
             if secoes:
                 for secao in secoes:
-                    
+                    secao.posts = 0
                     topicos = Topico.objects.filter(secao=secao)
                     
                     for topico in topicos:
                         posts = Post.objects.filter(topico=topico)
 
                         if posts:
-                            secao.posts = posts
+                            secao.posts += posts.count()
 
                     if topicos:
                         secao.topicos = topicos
