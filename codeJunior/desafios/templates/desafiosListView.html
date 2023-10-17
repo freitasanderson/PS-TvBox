@@ -98,14 +98,17 @@
         
         <ul class="space-y-2 mt-4">
           {% for trilha in object_list %}
-          
-            {% if trilha.checkCompletouTrilha and trilha.quiz_set.first %}
-              <li class="w-full">
-                <a class="w-full block text-center rounded-xl bg-green-500 p-4 text-slate-900 font-bold block" href="{% url "quiz-tentativa" trilha.quiz_set.first.slug %}">
-                  {{ trilha }}
-                </a>
+          <li class="w-full">
+                {% if trilha.checkCompletouTrilha and trilha.quiz_set.first %}
+                  <a class="w-full block text-center rounded-xl bg-green-500 p-4 text-slate-900 font-bold block" href="{% url "quiz-tentativa" trilha.quiz_set.first.slug %}">
+                    {{ trilha }}
+                  </a>
+                  {% else %}
+                  <button class="w-full block text-center rounded-xl bg-red-500 p-4 text-slate-900 font-bold block">
+                    Trilha {{ trilha }} incompleta
+                  </button>
+                {% endif %}
               </li> 
-            {% endif %}
           {% endfor %}
         </ul>
       </div>
