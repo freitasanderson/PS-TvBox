@@ -89,9 +89,26 @@
           <strong class="text-white">{{ request.user.pessoa.nomeCompleto }}</strong>
         </div>
       </div>
-      <div class="mt-4">
+      <!-- <div class="mt-4">
         <canvas id="myChart"></canvas>
-      </div>
+      </div> -->
+
+      <div class="mt-8 bg-slate-800 p-4 rounded-xl text-white">
+        <h3 class="text-2xl font-semibold mb-4">Meus Emblemas</h3>
+        
+        <ul class="space-y-2 mt-4">
+            {% for emblema in emblemasGanhos %}
+                <li class="flex items-center">
+                    <img src="{{ emblema.imagem.url }}" alt="{{ emblema.nome }}" class="w-8 h-8 mr-2 rounded-full mr-2">
+                    {{ emblema.nome }}
+                </li>
+            {% empty %}
+                <li>Você não ganhou emblemas ainda.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+
 
       <div class="mt-8 bg-slate-800 p-4 rounded-xl text-white">
         <h3>Quiz</h3>
