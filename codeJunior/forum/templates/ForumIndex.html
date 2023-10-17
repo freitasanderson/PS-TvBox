@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="title-forum">
+        
+        <p class="text-7xl text-center mt-4 pb-4 font-extrabold text-white text-4xl">Code Junior Fórum</p>
+    </div>
+
+    <div class="areas pb-6">
+
+        {% for area in areas %}
+            <div class="area mb-4">
+                <div class="area-header">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-sky-600">
+                            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 font-bold">
+                                        {{area}}
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for secao in area.secoes %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    
+                                                    <a href="{% url "forum:secaoView" pk=secao.id%}">
+                                                        {{secao}}
+                                                    </a>
+
+                                                </div>
+                                                <div class="secao-descricao text-slate-600 font-light ml-4">
+                                                    <a href="{% url "forum:secaoView" pk=secao.id%}">
+                                                        {{secao.descricao}}
+                                                    </a>
+                                                </div>
+                                                <div class="flex">
+                                                    
+                                                    {% if secao.subsecoes %}
+                                                        <span class="text-slate-600 mt-2 ml-4"> Sub-seção:</span>
+                                                        {% for subsecao in secao.subsecoes %}
+                                                            <div class="subsecao font-regular text-slate-600 mt-1 mx-1">
+                                                                <button type="button" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-2 py-1 text-center mr-2 mb-2">
+                                                                    {{subsecao}}
+                                                                </button>
+                                                            </div>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </div>
+
+                                            </th>
+                                                
+                                            <td class="px-6 py-1">
+                                            </td>
+                                            <td class="px-6 py-2 text-slate-700 font-bold">
+                                                {{secao.posts}} posts em {{secao.topicos|length}} tópicos.
+                                            </td>
+                                            <td class="px-6 py-1">
+                                            </td>
+                                            <td class="px-6 py-8 text-slate-700 font-bold">
+                                                {% if secao.ultimoPost %}
+                                                    Último Post:
+
+                                                    <span class="text-green-500">
+                                                        {{secao.ultimoPost.quemPostou}} 
+                                                    </span>
+
+                                                    em 
+                                                    <span class="text-amber-500">
+                                                        {{secao.ultimoPost.topico}}
+                                                    </span>
+
+                                                {% endif %}
+                                            </td>
+                                            
+                                        </tr>
+                                {% endfor %}
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

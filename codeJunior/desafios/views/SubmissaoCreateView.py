@@ -1,11 +1,11 @@
 import subprocess
-from typing import Any
-from django.forms.models import BaseModelForm
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpResponseRedirect
 from django.views.generic.edit import FormView
+from django.urls import reverse
+#####
 from desafios.models.Submissao import Submissao
 from desafios.forms import SubmissaoForm
-from desafios.models import Desafio
+from desafios.models import Desafio, Solucao
 
 from cadastro.models import Pessoa
 class SubmissaoCreateView(FormView):
@@ -36,12 +36,12 @@ class SubmissaoCreateView(FormView):
         submissao.pessoa = Pessoa.objects.get(user=self.request.user)
         submissao.codigo = codigo
         submissao.problema = problema
-    
-        if resultadoUsuario.strip() == problema.solucao.strip():
-            submissao.resultado = "Passou"
+
+        if resultadoUsuario.strip() == str(Solucao.objects.get(desafio=problema).entrada).strip():
+            submissao.resultado = 1
         else:
-            submissao.resultado = "Falhou"
+            submissao.resultado = 0
 
         submissao.save()
         
-        return super().post(request, *args, **kwargs)
+        return HttpResponseRedirect(reverse('desafios-list'))

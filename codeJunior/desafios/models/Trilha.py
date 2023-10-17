@@ -6,7 +6,7 @@ class Trilha(models.Model):
     descricao = models.TextField(u'Descrição da Trilha', max_length=2000)
     desafios = models.ManyToManyField(Desafio, verbose_name="Desafios da trilha")  
 
-    linguagem = models.ForeignKey(Linguagem, verbose_name='Linguagem da trilha', on_delete=models.PROTECT)
+    linguagem = models.ForeignKey(Linguagem, default=1,verbose_name='Linguagem da trilha', on_delete=models.PROTECT)
 
     class Meta:
         verbose_name = 'Trilha de Conteúdo'
