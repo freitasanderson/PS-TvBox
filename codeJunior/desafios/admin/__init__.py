@@ -2,6 +2,7 @@ from desafios.admin.DesafioAdmin import DesafioAdmin
 from desafios.admin.SubmissaoAdmin import SubmissaoAdmin
 from desafios.admin.TrilhaAdmin import TrilhaAdmin
 from desafios.admin.LinguagemAdmin import LinguagemAdmin
+from desafios.admin.SolucaoAdmin import SolucaoAdmin
 
 from desafios.admin.biblioteca.DocumentacaoAdmin import DocumentacaoAdmin
 from desafios.admin.biblioteca.TipoTutorialAdmin import TipoTutorialAdmin
