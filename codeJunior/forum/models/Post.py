@@ -13,6 +13,10 @@ class Post(models.Model):
     conteudo = models.TextField(u'Conteúdo do Post', max_length=2000)
 
     index = models.BooleanField(verbose_name=u'É o Primeiro Post?', default=False, editable=True)
+    
+    curtidas = models.IntegerField(u'Curtidas', default=0)
+    
+    dataCadastro = models.DateTimeField('Data de Cadastro', auto_now_add=True, null=True)
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=True)
 

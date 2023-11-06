@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="title-forum">
+        
+        <p class="text-7xl text-center mt-4 pb-4 font-extrabold text-white text-4xl">Code Junior Fórum</p>
+    </div>
+    <!-- Breadcrumb -->
+    <div class="flex w-9/12 justify-start mb-4 px-6">
+        <nav class="flex mx-10 px-4 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+            <li class="inline-flex items-center">
+                <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+                </svg>
+                <a href="{% url "forum:index-Forum"%}">
+                    Fórum
+                </a>
+            </li>
+            <li aria-current="page">
+                <div class="flex items-center">
+                <svg class="w-3 h-3 mx-1 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">{{secao}}</span>
+                </div>
+            </li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="areas pb-6">
+
+        
+            <div class="area mb-4">
+                <div class="area-header">
+                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                        <table class="w-full text-sm text-left text-sky-600">
+                            <thead class="text-xs text-white uppercase bg-blue-600 border-b border-blue-400 ">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 font-bold">
+                                        {{secao}}
+                                    </th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    {% for subsecao in secao.subsecoes %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    <a href="{% url "forum:subsecaoView" pk=subsecao.id %}">
+                                                        {{subsecao}}
+                                                    </a>
+                                                </div>
+                                                <div class="subsecao-descricao text-slate-600 font-light ml-4">
+                                                    <a href="{% url "forum:subsecaoView" pk=subsecao.id %}">
+                                                        {{subsecao.descricao}}
+                                                    </a>
+                                                </div>
+
+                                            </th>
+                                                
+                                            <td class="px-6 py-1">
+                                            </td>
+                                            <td class="px-6 py-2 text-slate-700 font-bold">
+                                                {{subsecao.posts|length}} posts em {{subsecao.topicos|length}} tópicos.
+                                            </td>
+                                            <td class="px-6 py-1">
+                                            </td>
+                                            <td class="px-6 py-8 text-slate-700 font-bold">
+                                                {% if subsecao.ultimoPost %}
+                                                    Último Post:
+
+                                                    <span class="text-green-500">
+                                                        {{subsecao.ultimoPost.quemPostou}} 
+                                                    </span>
+
+                                                    em 
+                                                    <span class="text-amber-500">
+                                                        <a href="{% url "forum:topicoView" pk=subsecao.ultimoPost.topico.id%}">
+                                                            {{subsecao.ultimoPost.topico}}
+                                                        </a>
+                                                    </span>
+                                                    
+                                                {% endif %}
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+
+                                    
+                            </tbody>
+                        </table>
+
+                        {% if not secao.subsecoes %}
+                            <table class="w-full text-sm text-left text-sky-600">
+                                <tbody>
+                                    {% for topico in secao.topicos %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    <a href="{% url "forum:topicoView" pk=topico.id%}">
+                                                        {{topico}}
+                                                    </a>
+                                                </div>
+                                                <div class="subsecao-descricao text-slate-600 font-light ml-4">
+                                                    <a href="{% url "forum:topicoView" pk=topico.id%}">
+                                                        {{topico.indexPost.conteudo|truncatechars:100|safe}}
+                                                    </a>
+                                                </div>
+
+                                            </th>
+                                            <td class="px-6 py-2 text-slate-700">
+                                            </td>    
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Respostas: {{topico.posts|length}}
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Ultimo post por: 
+                                                <span class="text-green-500">
+                                                    {{topico.ultimoPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Criado por 
+                                                <span class="text-green-500">
+                                                    {{topico.indexPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        {% endif %}
+
+                    </div>
+
+                </div>
+                
+            </div>
+            {% if secao.subsecoes %}
+                <div class="area mb-4">
+                    <div class="area-header">
+                        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                            <table class="w-full text-sm text-left text-sky-600">
+                                <tbody>
+                                    {% for topico in secao.topicos %}
+                                        <tr class="bg-slate-200 border-b border-blue-400">
+                                            <th scope="row" class="px-6 py-4 font-medium text-sky-600">
+                                                <div class="secao">
+                                                    <a href="{% url "forum:topicoView" pk=topico.id%}">
+                                                        {{topico}}
+                                                    </a>
+                                                </div>
+                                                <div class="subsecao-descricao text-slate-600 font-light ml-4">
+                                                    <a href="{% url "forum:topicoView" pk=topico.id%}">
+                                                        {{topico.indexPost.conteudo|truncatechars:100|safe}}
+                                                    </a>
+                                                </div>
+
+                                            </th>
+                                            <td class="px-6 py-2 text-slate-700">
+                                            </td>    
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Respostas: {{topico.posts|length}}
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Ultimo post por: 
+                                                <span class="text-green-500">
+                                                    {{topico.ultimoPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                            <td class="px-1 py-2 text-slate-700">
+                                                Criado por 
+                                                <span class="text-green-500">
+                                                    {{topico.indexPost.quemPostou}}
+                                                </span>
+                                            </td>
+                                            
+                                        </tr>
+                                    {% endfor %}
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            {% endif %}
+        </div>
+{% endblock content %}
