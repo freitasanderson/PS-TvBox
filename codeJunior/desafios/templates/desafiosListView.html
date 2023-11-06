@@ -99,7 +99,7 @@
         <ul class="space-y-2 mt-4">
             {% for emblema in emblemasGanhos %}
                 <li class="flex items-center">
-                    <img src="{{ emblema.imagem.url }}" alt="{{ emblema.nome }}" class="w-8 h-8 mr-2 rounded-full mr-2">
+                    <img src="{{ emblema.imagem.url }}" alt="{{ emblema.nome }}" class="w-8 h-8 mr-2 rounded-full mr-2 bg-green-600 shadow-lg shadow-green-600/50">
                     {{ emblema.nome }}
                 </li>
             {% empty %}
@@ -108,27 +108,21 @@
         </ul>
     </div>
     
-
-
-      <div class="mt-8 bg-slate-800 p-4 rounded-xl text-white">
-        <h3>Quiz</h3>
-        
-        <ul class="space-y-2 mt-4">
-          {% for trilha in object_list %}
+    <div class="mt-8 bg-slate-800 p-4 rounded-xl text-white">
+      <h3>Trilhas Disponíveis</h3>
+      
+      <ul class="space-y-2 mt-4">
+        {% for trilha in object_list %}
           <li class="w-full">
-                {% if trilha.checkCompletouTrilha and trilha.quiz_set.first %}
-                  <a class="w-full block text-center rounded-xl bg-green-500 p-4 text-slate-900 font-bold block" href="{% url "quiz-tentativa" trilha.quiz_set.first.slug %}">
-                    {{ trilha }}
-                  </a>
-                  {% else %}
-                  <button class="w-full block text-center rounded-xl bg-red-500 p-4 text-slate-900 font-bold block">
-                    Trilha {{ trilha }} incompleta
-                  </button>
-                {% endif %}
-              </li> 
-          {% endfor %}
-        </ul>
-      </div>
+            <!-- {% if not trilha.checkCompletouTrilha %} -->
+              <a class="w-full block text-center rounded-xl bg-green-500 p-4 text-slate-900 font-bold block" href="#">
+                {{ trilha.titulo }}
+              </a>
+            <!-- {% endif %} -->
+          </li> 
+        {% endfor %}
+      </ul>
+    </div>
 
       <div class="mt-8 bg-slate-800 p-4 rounded-xl text-white">
         <h3>Quiz</h3>
