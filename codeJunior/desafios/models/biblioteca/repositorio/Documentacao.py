@@ -10,11 +10,9 @@ class Documentacao(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     nome = models.CharField(u'Nome da Documentação', max_length=255)
-    descricao = models.TextField(u'Descrição da Documentação', max_length=500, null=True, blank=True)
+    descricao = models.TextField(u'Descrição da Documentação', max_length=50000, null=True, blank=True)
 
     tipo = models.ForeignKey(Linguagem, verbose_name='Tipo da Documentação', help_text="Guias, Manuais", on_delete=models.PROTECT,)
-
-    arquivo = models.FileField(u'Arquivo', upload_to='biblioteca/repositorio/')
     
     quemCadastrou = models.ForeignKey(Pessoa, verbose_name='Quem Cadastrou', null=True, blank=True, default=None, on_delete=models.PROTECT)
 
