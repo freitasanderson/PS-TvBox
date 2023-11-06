@@ -10,7 +10,7 @@ class Post(models.Model):
     
     quemPostou = models.ForeignKey(Perfil, verbose_name=('perfil'), on_delete=models.CASCADE)
 
-    conteudo = models.TextField(u'Conteúdo do Post', max_length=2000)
+    conteudo = models.TextField(u'Conteúdo do Post', max_length=500000)
 
     index = models.BooleanField(verbose_name=u'É o Primeiro Post?', default=False, editable=True)
     

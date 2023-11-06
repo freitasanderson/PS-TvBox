@@ -4,6 +4,8 @@ from desafios.admin.TrilhaAdmin import TrilhaAdmin
 from desafios.admin.LinguagemAdmin import LinguagemAdmin
 from desafios.admin.SolucaoAdmin import SolucaoAdmin
 
+from desafios.admin.EmblemaAdmin import EmblemaAdmin
+
 from desafios.admin.biblioteca.DocumentacaoAdmin import DocumentacaoAdmin
 from desafios.admin.biblioteca.TipoTutorialAdmin import TipoTutorialAdmin
 from desafios.admin.biblioteca.TutorialAdmin import TutorialAdmin
