@@ -9,3 +9,6 @@ from desafios.views.quiz.RespostaOpcaoQuizCreateView import RespostaOpcaoQuizCre
 
 #Biblioteca
 from desafios.views.biblioteca.BibliotecaListView import BibliotecaListView
+
+# Trilha
+from desafios.views.TrilhaDetailView import TrilhaDetailView

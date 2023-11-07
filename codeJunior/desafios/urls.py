@@ -1,4 +1,5 @@
 from django.urls import path
+from desafios.views import TrilhaDetailView
 from desafios.views import SubmissaoCreateView, DesafiosResolvidosListView, DesafiosListView, DesafiosDetailView
 
 from desafios.views import QuizTentativaDetailView, RespostaOpcaoQuizCreateView
@@ -17,6 +18,8 @@ urlpatterns = [
     path('quiz/<int:pk>/resposta/', RespostaOpcaoQuizCreateView.as_view(), name="quiz-resposta-create"),
 
     path('biblioteca/', BibliotecaListView.as_view(), name='biliotecaList'),
+
+    path('ver-trilha/<int:pk>', TrilhaDetailView.as_view(), name='trilha-detail'),
     
     #Logins views
     path('login/', LoginView.as_view(), name='login'),
