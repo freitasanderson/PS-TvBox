@@ -19,6 +19,21 @@
   </title>
 </head>
 <body>
+  <header class="flex justify-center items-center p-20" style="background-color: #3586FF;">
+    <a href="{% url "forum:index-Forum" %}">
+      <img class="p-2" src="{% static 'assets/svg/CodeJuniorForum.svg' %}" style="height: 6rem;">
+    </a>
+
+    <a href="{% url "desafios-list" %}" class="text-white text-4xl mx-4">
+      Portal
+    </a>
+    
+    <a href="{% url "biliotecaList" %}" class="text-white text-4xl mx-4">
+      Biblioteca
+    </a>
+      
+  </header>
+
   <main class="main-content">
     {% block content %}{% endblock content %}
   </main>
