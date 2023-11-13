@@ -6,12 +6,12 @@
 {% endblock static_css %}
 
 {% block static_js %}
-<script src="{% static "problemasProgramacao/index.js" %}"></script>
+  <script src="{% static "problemasProgramacao/index.js" %}"></script>
 {% endblock static_js %}
 
 {% block content %}
-<div class=" px-24 py-12">
-  <form method="post" action="{% url "submeterTentativa" %}" class="flex mx-auto max-h-screen min-h-screen h-full gap-8">
+<div class="h-screen px-24 py-12">
+  <form id="formSubmeterDesafio" method="post" action="{% url "api-submissao-desafio" object.pk %}" class="flex mx-auto max-h-screen h-full gap-8">
     {% csrf_token %}
     <input type="hidden" name="problema" value="{{object.pk}}">
     <input type="hidden" name="pessoa" value="{{request.user.pk}}">
@@ -38,7 +38,7 @@
             </p>
     
             <p class=" w-96">
-              {{ object.descricao}}
+              {{ object.descricao|safe }}
             </p>
           </div>
     
@@ -47,7 +47,8 @@
           <strong>Entrada:</strong>
     
           <div class="mt-2 rounded-xl bg-slate-800 p-4">
-              <span>A entrada consiste em um valor inteiro positivo N.</span>
+              <span>O programa deve retornar o seguinte print</span>
+              <pre class="mt-1">{"nome": "pedro"}</pre>
           </div>
         </div>
         <div class="mt-8 w-96">
@@ -59,14 +60,20 @@
         </div>
       </div>
   
-      <button class="rounded-xl p-4 w-full bg-green-500 font-bold text-slate-900">Submeter</button>
-    </aside>
-    <div class="w-full">
-      <pre class="editor p-12">
-        # Escreva seu código aqui
-        print('Olá, mundo')
-      </pre>
-      <textarea class="hidden" name="codigo"></textarea>
+      <button class="rounded-xl p-4 w-full bg-green-500 font-bold text-slate-900 flex items-center justify-center gap-2">Submeter <span id="containerLoadingButton"><span/></button>
+    </aside> 
+    
+    <div class="max-h-screen w-full rounded-2xl" style="background-color: #282a36;">
+      <div id="containerEditor" class="max-h-screen w-full overflow-hidden rounded-2xl grid grid-rows-[1fr_0rem]" style="background-color: #282a36;">
+        <div class="pt-8 px-8 max-h-full h-full">
+          <pre class="editor h-full"></pre>
+         <textarea class="hidden" name="codigo"></textarea>
+        </div>
+  
+        <div id="containerResultado" class="py-8 px-8 border-t-2 border-slate-700" style="background-color: #282a36;">
+          
+        </div>
+      </div>
     </div>
   </form>
 </div>
