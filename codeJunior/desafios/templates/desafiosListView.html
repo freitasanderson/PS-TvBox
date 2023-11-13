@@ -113,13 +113,11 @@
       
       <ul class="space-y-2 mt-4">
         {% for trilha in object_list %}
-          <li class="w-full">
-            <!-- {% if not trilha.checkCompletouTrilha %} -->
-              <a class="w-full block text-center rounded-xl bg-green-500 p-4 text-slate-900 font-bold block" href="#">
-                {{ trilha.titulo }}
-              </a>
-            <!-- {% endif %} -->
-          </li> 
+        <li class="w-full">
+                <a class="w-full block text-center rounded-xl bg-green-500 p-4 text-slate-900 font-bold block" href="{% url 'trilha-detail' trilha.pk %}">
+                  {{ trilha }}
+                </a>
+            </li> 
         {% endfor %}
       </ul>
     </div>
