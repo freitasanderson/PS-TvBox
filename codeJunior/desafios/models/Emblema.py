@@ -8,5 +8,10 @@ class Emblema(models.Model):
     imagem = models.ImageField(u'Imagem do Emblema', upload_to='emblemas/')
     trilha = models.ForeignKey(Trilha, on_delete=models.CASCADE)
     
+    class Meta:
+        verbose_name = 'Emblema'
+        verbose_name_plural = 'Emblemas'
+        ordering = ['id','trilha','nome']
+
     def __str__(self):
         return self.nome

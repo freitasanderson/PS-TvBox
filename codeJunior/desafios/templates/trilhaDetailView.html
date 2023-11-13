@@ -1,0 +1,43 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div class=" px-24 py-12">
+<aside class="text-white flex flex-col justify-between bg-slate-900 p-12 rounded-2xl">
+    <div class="flex flex-col">
+      <h1 class="text-2xl mb-8 font-bold">{{ object.titulo }}</h1>
+      <div class="space-y-2">
+
+        <div class="flex flex-col gap-4">
+          <p class=" w-96">
+            {{ object.descricao}}
+          </p>
+        </div>
+  
+      </div>
+      <div class="mt-8 w-96">
+        <strong>Conteúdo da Trilha:</strong>
+  
+        {% for desafio in object.desafios.all %}
+            <li>
+                <h3>{{ desafio.titulo }}</h3>
+                <p>{{ desafio.descricao }}</p>
+                <br>
+                <p>Dificuldade: {{ desafio.get_dificuldade_display }}</p>
+                <br>
+                <p>Estimativa de tempo: {{ desafio.estimativa }} minutos</p>
+            </li>
+        {% endfor %}
+
+      </div>
+      <div class="mt-8 w-96">
+        <strong>Quiz da Trilha:</strong>
+        <p>Total de submissões no quiz: {{ totalSubmissoes }}</p>
+        <p>Porcentagem de respostas corretas: {{ porcentagemCorretas }}%</p>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+{% endblock content %}

@@ -6,7 +6,7 @@ from desafios.models.Emblema import Emblema
 
 class Quiz(models.Model):
   titulo = models.TextField(verbose_name="Titulo do quiz", max_length=300)
-  descricao = models.TextField(u'Descrição do quiz', max_length=200)
+  descricao = models.TextField(u'Descrição do quiz', max_length=20000)
   trilha = models.ForeignKey(Trilha, verbose_name='Trilha do quiz', on_delete=models.PROTECT, null=True)
   slug = models.SlugField('Slug', max_length=150, unique=True, blank=False, null=False)
   quemCadastrou = models.ForeignKey(Pessoa, verbose_name='Quem cadastrou', on_delete=models.PROTECT)

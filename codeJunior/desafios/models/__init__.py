@@ -7,6 +7,8 @@ from desafios.models.Solucao import Solucao
 
 ### Biblioteca
 from desafios.models.biblioteca.repositorio.Documentacao import Documentacao
+from desafios.models.biblioteca.tutoriais.TipoTutorial import TipoTutorial
+from desafios.models.biblioteca.tutoriais.Tutorial import Tutorial
 
 # Quiz
 from desafios.models.quiz.RespostaQuiz import RespostaQuiz
