@@ -1,5 +1,5 @@
 from django.views.generic.list import ListView
-from desafios.models import Desafio, Trilha, Submissao
+from desafios.models import Desafio, Trilha, Submissao, Emblema
 from desafios.forms import SubmissaoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -10,6 +10,9 @@ class DesafiosListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
       context = super().get_context_data(**kwargs)
       submissoes = Submissao.objects.filter(problema__in=Desafio.objects.all(), pessoa__user=self.request.user)
+      usuario = self.request.user.pessoa
+      emblemas_ganhos = usuario.emblemasGanhos.all()
+      context['emblemasGanhos'] = emblemas_ganhos
       context['data'] = self.getDataSubmissoes(submissoes)
       context['submissoes'] = submissoes
       context['submissoesCorretas'] = submissoes.filter(resultado=1).count()

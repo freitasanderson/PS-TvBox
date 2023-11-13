@@ -8,7 +8,6 @@ class AlternativaOpcaoQuiz(models.Model):
   correta = models.BooleanField(verbose_name=u'Correta?',editable=True, default=True, help_text='Indica se a alternativa está correta')
   
   ativo = models.BooleanField(verbose_name=u'Está ativo?',editable=True, default=True, help_text='Indica se a alternativa está ativo')
-  ordem = models.IntegerField(u'Ordenação', default=1,)
 
   class Meta:
     verbose_name = 'Alternativa opção do quiz'

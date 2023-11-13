@@ -26,6 +26,8 @@ class SubsecaoView(TemplateView):
         if topicos:
             subsecao.topicos = topicos
 
+        context['secao'] = subsecao.secao
+
         context['subsecao'] = subsecao
 
         return self.render_to_response(context)

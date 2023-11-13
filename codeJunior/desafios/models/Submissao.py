@@ -16,6 +16,10 @@ class Submissao(models.Model):
 
     pessoa = models.ForeignKey(Pessoa, verbose_name=u'Pessoa', null=False, on_delete=models.CASCADE)
     dataSubmissao = models.DateTimeField('Data de Submissão', auto_now_add=True, null=True)
+    class Meta:
+        verbose_name = 'Submissão'
+        verbose_name_plural = 'Submissões'
+        ordering = ['problema__id','id']
 
     def __str__(self):
         return f'{self.id} - {self.codigo}'

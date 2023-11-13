@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+.editor {
+    display: block;
+    position: relative;
+    min-height: 200px;
+    height: 100%;
+  }

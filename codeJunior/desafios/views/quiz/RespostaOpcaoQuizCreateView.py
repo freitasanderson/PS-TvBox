@@ -10,7 +10,7 @@ class RespostaOpcaoQuizCreateView(CreateView):
   
   def form_valid(self, form):
       resposta = form.save(commit=False)
-      resposta.quemCadastrou = self.request.user
+      resposta.quemRespondeu = self.request.user.pessoa
       resposta.save()
       return super().form_valid(form)
 
