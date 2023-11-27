@@ -12,10 +12,10 @@ CORS_ALLOWED_ORIGINS = CSRF_TRUSTED_ORIGINS
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'neondb',
-    'USER': 'freitasanderson',
-    'PASSWORD': '5h7yquaQdCrg',
-    'HOST': 'ep-late-bread-25683911.us-east-2.aws.neon.tech',
-    'PORT': '5432',
+    'NAME': 'defaultdb',
+    'USER': 'doadmin',
+    'PASSWORD': 'AVNS_-cGTNpKh6BoKtJFuvd6',
+    'HOST': 'db-postgresql-nyc3-95528-do-user-8907006-0.c.db.ondigitalocean.com',
+    'PORT': '25060',
   }
 }
