@@ -24,4 +24,6 @@ class TopicoCreateView(TemplateView):
         context["secao"] = secaoObj
         context["subSecao"] = subSecaoObj 
 
+        # print(f'Secao: {secao} e Subsecao: {subsecao}')
+        
         return context
