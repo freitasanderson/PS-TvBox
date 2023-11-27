@@ -1,5 +1,7 @@
 from django.urls import path
-from forum.views import ForumIndexView, SecaoView, SubsecaoView, TopicoView, TopicoCreateView
+from forum.views import ForumIndexView, SecaoView, SubsecaoView, TopicoView, TopicoCreateView, TopicoCreateApiView
+
+from rest_framework.routers import DefaultRouter
 
 app_name= 'forum'
 
@@ -13,3 +15,8 @@ urlpatterns = [
 
     
 ]
+
+router = DefaultRouter(trailing_slash=False)
+router.register(r'api/Topico_Create',TopicoCreateApiView, basename='TopicoApi')
+
+urlpatterns += router.urls
