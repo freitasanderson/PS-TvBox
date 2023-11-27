@@ -7,8 +7,8 @@ admin.site.index_title = 'Code Junior'
 admin.site.site_url = '/codejunior/'
 
 urlpatterns = [
-    path("codejunior/admin/", admin.site.urls),
     path("codejunior/", include('desafios.urls')),
+    path("codejunior/admin/", admin.site.urls),
     path("codejunior/forum/", include('forum.urls')),
     path('summernote/', include('django_summernote.urls')),
 

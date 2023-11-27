@@ -1,0 +1,37 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block static_css %}
+    <link rel="stylesheet" href="{% static 'problemasProgramacao/geral.css' %}">
+{% endblock static_css %}
+
+{% block static_js %}
+
+{% endblock static_js %}
+
+
+{% block content %}
+
+<div class="flex container mx-auto min-h-screen flex-col px-24 py-12 text-zinc-50 ">
+  <section class="flex flex-col gap-8 items-center">
+    <h1 class="max-w-4xl text-6xl text-center font-bold">
+      Habilidades falam mais alto do que palavras
+    </h1>
+
+    <p class="text-center max-w-3xl">Nós auxiliamos empresas a desenvolverem as equipes de tecnologia mais robustas. Ajudamos candidatos a aprimorarem suas habilidades técnicas e a buscarem oportunidades de emprego.</p>
+  </section>
+
+  <section class="bg-slate-700 p-12  rounded-2xl flex items-center gap-8 mt-24">
+    <div class="-w-md">
+      <h2 class="font-bold text-2xl">Explore e aprimore suas habilidades.</h2>
+      <p class="my-4">Cada ideia começa com uma linha de código. Prepare-se para o trabalho, aprimore suas habilidades junto a uma comunidade global de desenvolvedores. Tenha acesso ao conteúdo essencial para desenvolver novas habilidades e conquistar o emprego dos seus sonhos.</p>
+
+      <a class="p-4 px-8 mt-4 text-center rounded-2xl bg-green-500 text-slate-900 font-bold inline-block" href="{% url 'cadastro' %}"><span>Cadastrar-se e praticar</span> <i class="ml-2 fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <div>
+      <img src="https://www.hackerrank.com/wp-content/uploads/2022/09/community.jpg" class="rounded-2xl" alt="">
+    </div>
+  </section>
+</div>
+{% endblock content %}
