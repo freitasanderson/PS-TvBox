@@ -23,6 +23,26 @@
     .font-instrument-sans {
       font-family: 'Roboto Mono', monospace;
     }
+    .link-topbar{
+      position: relative;
+    }
+    .link-topbar::after{
+      content: '';
+      background-color: #22C55E;
+      height: 2px;
+      width: 0%;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      transition: .2s;
+    }
+    .link-topbar:hover{
+      color: #22C55E;
+    }
+    .link-topbar:hover::after{
+      width:100%;
+    }
   </style>
 
   <title>
@@ -34,18 +54,25 @@
   <main class="bg-slate-800 ">
     {% block header %}
     <header class="container mx-auto py-12 px-24 font-instrument-sans flex items-center gap-10 text-zinc-50">
-      <h1 class="font-bold text-3xl"><span class="text-green-500">./</span>CODEJUNIOR</h1>
+      <a href="{% url "desafios-index" %}">
+        <h1 class="font-bold text-3xl"><span class="text-green-500">./CODE</span>JUNIOR</h1>
+      </a>
   
       <nav class="flex-1">
         <ul class="flex items-center gap-4">
-          <li>
-            <a href="{% url "biliotecaList" %}" class="">
+          <li class="link-topbar">
+            <a href="{% url "desafios-list" %}">
+              trilhas
+            </a>
+          </li>
+          <li class="link-topbar">
+            <a href="{% url "biliotecaList" %}">
               biblioteca
             </a>
           </li>
   
-          <li>
-            <a href="{% url "forum:index-Forum" %}" class="">
+          <li class="link-topbar">
+            <a href="{% url "forum:index-Forum" %}">
               fórum
             </a>
           </li>

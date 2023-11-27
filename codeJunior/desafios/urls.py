@@ -11,7 +11,7 @@ from cadastro.views import LoginView, SairView, CadastroView
 
 urlpatterns = [
     path('', IndexTemplateView.as_view(), name="desafios-index"),
-    path('home/', DesafiosListView.as_view(), name="desafios-list"),
+    path('trilhas/', DesafiosListView.as_view(), name="desafios-list"),
     path('desafio/<int:pk>', DesafiosDetailView.as_view(), name="desafios-detail"),
     path('tentativa/', SubmissaoCreateView.as_view(), name='submeterTentativa'),
     path('resultado/', DesafiosResolvidosListView.as_view(), name='desafioResolvido'),
