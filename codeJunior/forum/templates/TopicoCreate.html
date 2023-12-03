@@ -170,12 +170,11 @@
             
             $('#btn-criar-topico').on('click', function(){
                 var url = $('#urlApiTopico').val()
-                console.log('teste')
                 chamarApiTopico(url)
             })
 
 
-            function chamarApiTopico(url, id, tipo) {
+            function chamarApiTopico(url) {
                 var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
 
                 var titulo = $('#first_name').val()

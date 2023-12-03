@@ -5,3 +5,4 @@ from forum.views.TopicoView import TopicoView
 from forum.views.TopicoCreateView import TopicoCreateView
 
 from forum.views.api.TopicoCreateApiView import TopicoCreateApiView
+from forum.views.api.CurtidaPostApiView import CurtidaPostApiView

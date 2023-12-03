@@ -1,5 +1,6 @@
 from django.urls import path
-from forum.views import ForumIndexView, SecaoView, SubsecaoView, TopicoView, TopicoCreateView, TopicoCreateApiView
+from forum.views import ForumIndexView, SecaoView, SubsecaoView, TopicoView, TopicoCreateView
+from forum.views import TopicoCreateApiView, CurtidaPostApiView
 
 from rest_framework.routers import DefaultRouter
 
@@ -18,5 +19,7 @@ urlpatterns = [
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r'api/Topico_Create',TopicoCreateApiView, basename='TopicoApi')
+router.register(r'api/PostLike',CurtidaPostApiView, basename='CurtidaApi')
+
 
 urlpatterns += router.urls
