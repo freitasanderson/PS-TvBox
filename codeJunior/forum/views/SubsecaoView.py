@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from forum.models import Post, Secao, SubSecao,Topico
 
-class SubsecaoView(TemplateView):
+class SubsecaoView(LoginRequiredMixin, TemplateView):
     template_name="Subsecao.html"
 
     def get(self, request, *args, **kwargs):
