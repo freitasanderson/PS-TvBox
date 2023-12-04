@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
   }
+  .font-instrument-sans {
+    font-family: 'Roboto Mono', monospace;
+  }
   section{
     position: relative;
     width: 100%;

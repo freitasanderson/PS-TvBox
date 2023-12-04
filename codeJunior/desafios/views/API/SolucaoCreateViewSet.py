@@ -64,7 +64,7 @@ class SubmissaoCreateViewSet(APIView):
         else:
             submissao.resultado = 0
 
-        # submissao.save()
+        submissao.save()
         print(solucoes)
         data = json.dumps(solucoes, ensure_ascii=False) 
         print(data)
