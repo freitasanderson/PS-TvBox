@@ -23,8 +23,10 @@
 </head>
 <body>
   <header class="flex justify-center items-center font-instrument-sans p-20" style="background-color: #3586FF;">
-    <a href="{% url "forum:index-Forum" %}">
-      <img class="p-2" src="{% static 'assets/svg/CodeJuniorForum.svg' %}" style="height: 6rem;">
+    <a class="title-forum pr-4" href="{% url "forum:index-Forum" %}">
+        
+        <span class="text-7xl text-center mt-4 pb-4 font-extrabold text-white text-4xl">Code Junior Fórum</span>
+ 
     </a>
 
     <a href="{% url "desafios-index" %}" class="text-white text-2xl mx-4">
