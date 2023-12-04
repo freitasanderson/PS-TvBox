@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from forum.models import Area, Post, Secao, SubSecao,Topico
 
-class ForumIndexView(TemplateView):
+class ForumIndexView(LoginRequiredMixin,TemplateView):
     template_name="ForumIndex.html"
 
     def get(self, request, *args, **kwargs):

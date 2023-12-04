@@ -1,0 +1,1 @@
+from forum.forms.PostForm import PostForm

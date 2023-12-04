@@ -3,7 +3,7 @@ from django.db import models
 from django.apps import apps
 
 from forum.models import Topico
-from cadastro.models import Pessoa, Perfil
+from cadastro.models import Perfil
 from desafios.models import TipoTutorial
 # Create your models here.
 class Post(models.Model):
@@ -17,8 +17,6 @@ class Post(models.Model):
 
     index = models.BooleanField(verbose_name=u'É o Primeiro Post?', default=False, editable=True)
     
-    curtidas = models.IntegerField(u'Curtidas', default=0)
-    
     dataCadastro = models.DateTimeField('Data de Cadastro', auto_now_add=True, null=True)
 
     ativo = models.BooleanField(verbose_name=u'Ativo?', default=True, editable=True)
@@ -29,7 +27,7 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.topico} {self.quemPostou}'
-
+    
     def save(self):        
         secao = self.topico.secao
 
