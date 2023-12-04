@@ -12,10 +12,12 @@ class TopicoView(DetailView):
         self.object = self.get_object()
 
         posts = Post.objects.filter(topico=self.object)
+        for post in posts:
+            post.curtido = post.curtidapost_set.filter(quemCurtiu__pessoa__user=self.request.user,ativo=True).exists()
+            post.curtidas = post.curtidapost_set.filter(ativo=True)
 
         context['posts'] = posts
 
         # print(f'Context: {context}')
 
         return context
-    

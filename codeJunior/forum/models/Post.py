@@ -27,14 +27,6 @@ class Post(models.Model):
 
     def __str__(self):
         return f'{self.id} {self.topico} {self.quemPostou}'
-
-    def retornaCurtiu(self):
-        curtido = self.curtidapost_set.filter(quemCurtiu__pessoa__user=self.request.user,ativo=True).exists()
-        return curtido
-    
-    def retornaCurtidas(self):
-        curtidas = self.curtidapost_set.filter(ativo=True)
-        return curtidas
     
     def save(self):        
         secao = self.topico.secao
