@@ -1,0 +1,1 @@
+from cadastro.serializers.PerfilSerializer import PerfilSerializer

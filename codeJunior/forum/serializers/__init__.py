@@ -1,0 +1,1 @@
+from forum.serializers.CurtidaPostSerializer import CurtidaPostSerializer

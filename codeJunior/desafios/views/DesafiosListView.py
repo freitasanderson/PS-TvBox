@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 from desafios.models import Desafio, Trilha, Submissao, Emblema
-from desafios.forms import SubmissaoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from desafios.forms import SubmissaoForm
 
 class DesafiosListView(LoginRequiredMixin, ListView):
     model = Trilha
