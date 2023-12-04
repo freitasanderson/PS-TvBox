@@ -24,4 +24,4 @@ COPY . /code
 
 EXPOSE 8000
 
-CMD ["gunicorn", "--bind", ":8000", "--workers", "2", "codeJunior.wsgi"]
+CMD ["/bin/bash", "-c", "python manage.py collectstatic --noinput", "gunicorn", "--bind", ":8000", "--workers", "2", "codeJunior.wsgi"]
