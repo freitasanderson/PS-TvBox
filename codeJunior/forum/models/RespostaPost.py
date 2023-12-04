@@ -17,4 +17,4 @@ class RespostaPost(models.Model):
         verbose_name_plural = "Respostas Posts"
 
     def __str__(self):
-        return self.id
+        return f'{self.id}'

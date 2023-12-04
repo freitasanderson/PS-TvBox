@@ -1,7 +1,7 @@
 from django.urls import path
 from desafios.views import TrilhaDetailView
 
-from desafios.views import SubmissaoCreateView, DesafiosResolvidosListView, DesafiosListView, DesafiosDetailView, SubmissaoCreateViewSet
+from desafios.views import SubmissaoCreateView, DesafiosResolvidosListView, DesafiosListView, DesafiosDetailView, SubmissaoCreateViewSet, IndexTemplateView
 
 from desafios.views import QuizTentativaDetailView, RespostaOpcaoQuizCreateView
 
@@ -10,7 +10,8 @@ from desafios.views import BibliotecaListView
 from cadastro.views import LoginView, SairView, CadastroView
 
 urlpatterns = [
-    path('', DesafiosListView.as_view(), name="desafios-list"),
+    path('', IndexTemplateView.as_view(), name="desafios-index"),
+    path('trilhas/', DesafiosListView.as_view(), name="desafios-list"),
     path('desafio/<int:pk>', DesafiosDetailView.as_view(), name="desafios-detail"),
     path('tentativa/', SubmissaoCreateView.as_view(), name='submeterTentativa'),
     path('resultado/', DesafiosResolvidosListView.as_view(), name='desafioResolvido'),

@@ -9,33 +9,83 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:wght@100;300;400;700&family=Roboto+Slab:wght@100&display=swap" rel="stylesheet">
 
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   {% block static_css %}{% endblock static_css %}
 
+  <style>
+    .font-instrument-sans {
+      font-family: 'Roboto Mono', monospace;
+    }
+    .link-topbar{
+      position: relative;
+    }
+    .link-topbar::after{
+      content: '';
+      background-color: #22C55E;
+      height: 2px;
+      width: 0%;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      right: 0;
+      transition: .2s;
+    }
+    .link-topbar:hover{
+      color: #22C55E;
+    }
+    .link-topbar:hover::after{
+      width:100%;
+    }
+  </style>
+
   <title>
-    {% block title %}CodeJunior | App{% endblock title %}
+    {% block title %}CodeJunior{% endblock title %}
   </title>
 </head>
-<body>
+<body>  
   
-  <header class="bg-slate-900 flex justify-center items-center p-4">
-    <a class="" href="{% url "desafios-list" %}">
-      <img class="p-2" src="{% static 'assets/svg/CodeJunior.svg' %}" style="height: 4rem;">
-    </a>
-
-    <a href="{% url "biliotecaList" %}" class="text-white text-2xl mx-2">
-      Biblioteca
-    </a>
-    
-    <a href="{% url "forum:index-Forum" %}" class="text-white text-2xl mx-2">
-      Fórum
-    </a>
-      
-  </header>
-
-  <main class="bg-slate-800">
+  <main class="bg-slate-800 ">
+    {% block header %}
+    <header class="container mx-auto py-12 px-24 font-instrument-sans flex items-center gap-10 text-zinc-50">
+      <a href="{% url "desafios-index" %}">
+        <h1 class="font-bold text-3xl"><span class="text-green-500">./CODE</span>JUNIOR</h1>
+      </a>
+  
+      <nav class="flex-1">
+        <ul class="flex items-center gap-4">
+          <li class="link-topbar">
+            <a href="{% url "desafios-list" %}">
+              trilhas
+            </a>
+          </li>
+          <li class="link-topbar">
+            <a href="{% url "biliotecaList" %}">
+              biblioteca
+            </a>
+          </li>
+  
+          <li class="link-topbar">
+            <a href="{% url "forum:index-Forum" %}">
+              fórum
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="flex gap-2 items-center">
+        {% if not request.user.is_authenticated %}
+          <a class="underline p-4 px-8 w-full block text-center rounded-2xl shadow-green-500 text-green-500 font-bold whitespace-nowrap	" href="{% url 'cadastro' %}">Cadastrar-se</a>
+          <a class="p-4 px-8 w-full block text-center rounded-2xl bg-green-500 text-slate-900 font-bold" href="{% url 'login' %}">Login</a>
+        {% endif %}
+      </div>
+    </header>
+    {% endblock header %}
     {% block content %}{% endblock content %}
   </main>
 

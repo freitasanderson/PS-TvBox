@@ -21,7 +21,7 @@
       {% csrf_token %}
       <input type="hidden" name="quiz" value="{{ object.pk }}">
       <input type="hidden" name="opcao" value="{{ opcao.pk }}">
-      <h2 class="font-bold text-lg">{{opcao.titulo}}</h2>
+      <h2 class="font-bold text-lg">{{opcao.titulo|safe}}</h2>
       <ul class="mt-4 space-y-2">
         {% for alternativa in opcao.alternativas.all %}
           <li>

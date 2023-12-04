@@ -1,5 +1,9 @@
 from django.db import models
-from desafios.models import Linguagem, Submissao, Desafio
+from desafios.models.Submissao import Submissao
+from desafios.models.Linguagem import Linguagem
+from desafios.models.Desafio import Desafio
+
+# from desafios.models import Linguagem, Desafio
 
 class Trilha(models.Model):
     titulo = models.TextField(verbose_name="Titulo da trilha", max_length=300)
@@ -17,9 +21,9 @@ class Trilha(models.Model):
         return self.titulo
     
     def checkCompletouTrilha(self):
-        respostas = Submissao.objects.filter(problema__in=self.desafios.all())
+        respostas = Submissao.objects.filter(problema__in=self.desafios.all(), resultado=1)
 
-        if respostas.count() == self.desafios.count():
+        if respostas.count() >= self.desafios.count():
             return True
-        
+
         return False

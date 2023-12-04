@@ -22,6 +22,7 @@ class TrilhaDetailView(DetailView):
         else:
             porcentagemCorretas = 0
 
+        context['trilhasDisponiveis'] = Trilha.objects.all()
         context['totalSubmissoes'] = totalSubmissoes
         context['porcentagemCorretas'] = porcentagemCorretas
 

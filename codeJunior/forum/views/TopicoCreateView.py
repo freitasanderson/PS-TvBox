@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from forum.models import Post, Secao, SubSecao,Topico
 from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
 
 
-class TopicoCreateView(TemplateView):
+class TopicoCreateView(LoginRequiredMixin,TemplateView):
     template_name="TopicoCreate.html"
 
     def get_context_data(self, **kwargs):
@@ -24,4 +25,6 @@ class TopicoCreateView(TemplateView):
         context["secao"] = secaoObj
         context["subSecao"] = subSecaoObj 
 
+        # print(f'Secao: {secao} e Subsecao: {subsecao}')
+        
         return context
